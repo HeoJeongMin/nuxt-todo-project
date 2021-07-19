@@ -1,12 +1,19 @@
 <template>
-  <div>
+  <div class="input-group">
     <input
         v-model="todo"
         placeholder="insert to-do"
+        class="form-control2"
     >
 
-    <button @click="onAddTodo">
-      <span>Add</span>
+    <button 
+      @click="onAddTodo"
+      class="input-group-addon" 
+    >
+      <span>
+        <i class="fa fa-plus"></i>
+        Add
+      </span>
     </button>
 
   </div>

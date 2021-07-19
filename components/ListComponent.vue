@@ -5,19 +5,28 @@
         :key="index"
     >
       <input
-          v-show="!item.seen && inputSeen"
-          @change="toggleTodo(item)"
-          type="checkbox"
+        v-show="!item.seen && inputSeen"
+        @change="toggleTodo( { item, index } )"
+        type="checkbox"
       >
-      <b v-show="!inputSeen">{{ index + 1 }}</b>
-      <span
-          v-show="!item.seen"
-          :class="{ 'checkedColor' : item.completed }"
+      <b 
+        v-show="!inputSeen"
+        class="font-16 mt7 mr20 fl pu"
       >
-        {{ item.title }}
-        &nbsp;
-        {{ item.date }}
-      </span>
+        {{ index + 1 }}
+      </b>
+      <div
+        v-show="!item.seen"
+        :class="{ 'checkedColor' : item.completed }"
+        class="di mt5"
+      >
+        <div class="wh fl mr20 font-18">
+          {{ item.title }}
+        </div>
+        <div class="fr ml20 mt7 font-12">
+          {{ item.date }}
+        </div>
+      </div>
 
       <input
           v-show="item.seen && inputSeen"
@@ -27,13 +36,15 @@
       <button
           v-show="!item.seen && inputSeen"
           @click="updateTodo(index)"
+          class="input-group-addon"
       >
         Update
       </button>
 
       <button
           v-show="!item.seen && inputSeen"
-          @click="onDeleteTodo(index)"
+          @click="onDeleteTodo(item.id)"
+          class="input-group-addon"
       >
         Delete
       </button>
@@ -41,6 +52,7 @@
       <button
           v-show="item.seen && inputSeen"
           @click="applyTodo(index)"
+          class="input-group-addon"
       >
         Apply
       </button>
@@ -70,20 +82,24 @@ export default {
   methods: {
     ...todoStoreHelper.mapMutations([
       'changeSeen',
-      'deleteTodo',
       'toggleTodo'
     ]),
     ...todoStoreHelper.mapActions([
-      'fetchTodoList'
+      'fetchTodoList',
+      'deleteTodo'
     ]),
     updateTodo (index) {
       this.changeSeen({ index, value: true })
     },
     applyTodo (index) {
-      this.changeSeen({ index, value: false })
+      this.updateTodo({ })
+      // this.changeSeen({ index, value: false })
     },
-    onDeleteTodo (index) {
-      this.deleteTodo(index)
+    onDeleteTodo (id) {
+      const delete_confirm = confirm('삭제하시겠습니까?')
+      if(delete_confirm) {
+        this.deleteTodo({ id: id })
+      }
     }
   }
 }

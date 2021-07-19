@@ -1,12 +1,25 @@
 <template>
   <div id="todo-app">
-    <b>TO-DO App</b>
+    <div class="row mt10">
+      <div class="breadcrumb">
+        <div class="breadcrumb-item">
+          <i class="fa fa-home"></i> 
+          TO-DO App
+        </div>
+      </div>
+      <hr>
+    </div>
     <br/>
 
-    <input-component />
+    <div class="row mt10">
+      <div class="col-4">
+        <div class="card-box">
+          <input-component />
 
-    <list-component input-seen/>
-
+          <list-component input-seen/>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 

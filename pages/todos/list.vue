@@ -1,8 +1,21 @@
 <template>
     <div id="list-app">
-        <b>TO-DO List</b>
+        <div class="row mt10">
+            <div class="breadcrumb">
+            <div class="breadcrumb-item">
+                <i class="fa fa-home"></i>
+                TO-DO List
+            </div>
+            </div>
+        </div>
         <br/>
-        <list-component/>
+        <div class="row mt10">
+            <div class="col-4">
+                <div class="card-box">
+                    <list-component/>
+                </div>
+            </div>
+        </div>
     </div>
 </template>
 

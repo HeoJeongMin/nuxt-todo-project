@@ -1,5 +1,5 @@
 <template>
     <v-content>
-        <Nuxt/>
+        <!-- <Nuxt/> -->
     </v-content>
 </template>

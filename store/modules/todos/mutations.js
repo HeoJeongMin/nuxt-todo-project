@@ -1,5 +1,9 @@
 
 export default {
+    getTodoList (state, todo) {
+      state.todoList = todo
+    },
+    
     // 삭제
     deleteTodo (state, index) {
       state.todoList.splice(index, 1)
@@ -10,14 +14,11 @@ export default {
       state.todoList[index].seen = value
     },
   
-    getTodoList (state, todo) {
-      state.todoList = todo
-    },
-
-    toggleTodo (state, todo) {
-      // console.log(state)
-      // console.log(state.todoList[todo.id])
-      
-      state.todoList[todo.id].completed = true
+    toggleTodo (state, { index }) {
+      if(state.todoList[index].completed) {
+        state.todoList[index].completed = false
+      } else {
+        state.todoList[index].completed = true
+      }
     }
 }  

@@ -1,6 +1,18 @@
 <template>
-    <div>
-      <nuxt-link to="/todos/todo">추가 페이지</nuxt-link> |
-      <nuxt-link to="/todos/list">목록 페이지</nuxt-link>
+  <div class="row mt10">
+    <div class="col-4 tac">
+      <nuxt-link 
+        to="/todos/todo" 
+        class="btn btn-dark mr20"
+      >
+        추가 페이지
+      </nuxt-link> |
+      <nuxt-link 
+        to="/todos/list" 
+        class="btn btn-dark ml20 mr20"
+      >
+        목록 페이지
+      </nuxt-link>
     </div>
+  </div>
 </template>
