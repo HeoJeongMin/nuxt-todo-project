@@ -18,11 +18,13 @@ export default {
   // Global CSS: https://go.nuxtjs.dev/config-css
   css: [
     '@/assets/css/style.css',
-    '@/assets/css/font-awesome.css'
+    '@/assets/css/font-awesome.css',
+    '@/assets/css/bootstrap.css'
   ],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
+    '~/plugins/vee-validate.js'
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
@@ -45,9 +47,10 @@ export default {
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
+    transpile: ['vee-validate/dist/rules']
   },
 
   env: {
-    VUE_APP_API_URL: 'http://192.168.0.4:3000'
+    VUE_APP_API_URL: 'http://localhost:3000'
   }
 }

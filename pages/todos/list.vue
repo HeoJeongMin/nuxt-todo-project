@@ -3,7 +3,7 @@
         <div class="row mt10">
             <div class="breadcrumb">
             <div class="breadcrumb-item">
-                <i class="fa fa-home"></i>
+                <i class="fa fa-list"></i>
                 TO-DO List
             </div>
             </div>
