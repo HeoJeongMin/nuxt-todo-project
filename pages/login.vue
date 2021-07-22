@@ -3,18 +3,19 @@
     <div class="container">
       <div class="columns">
         <div class="column is-4 is-offset-4">
+          <h2 class="title has-text-centered">Welcome back!</h2>
 
           <Notification :message="error" v-if="error"/>
 
           <form method="post" @submit.prevent="login">
             <div class="field">
-              <label class="label">ID</label>
+              <label class="label">Email</label>
               <div class="control">
                 <input
-                  type="text"
+                  type="email"
                   class="input"
-                  name="id"
-                  v-model="frmId"
+                  name="email"
+                  v-model="email"
                 />
               </div>
             </div>
@@ -25,7 +26,7 @@
                   type="password"
                   class="input"
                   name="password"
-                  v-model="frmPw"
+                  v-model="password"
                 />
               </div>
             </div>
@@ -33,6 +34,11 @@
               <button type="submit" class="button is-dark is-fullwidth">Log In</button>
             </div>
           </form>
+          <div class="has-text-centered" style="margin-top: 20px">
+            <p>
+              Don't have an account? <nuxt-link to="/user/register">Register</nuxt-link>
+            </p>
+          </div>
         </div>
       </div>
     </div>
@@ -43,27 +49,33 @@
 import Notification from '~/components/Notification'
 
 export default {
-    components: {
-        Notification
-    },
-    data() {
-        return {frmId: '', frmPw: '', error: null}
-    },
-    methods: {
-        async login() {
-            try {
-                await this.$store.dispatch('login', {
-                        id: this.frmId,
-                        pw: this.frmPw
-                    })
-                    .then(() => this.redirect())
-            } catch (e) {
-                this.returnMsg = e.message
-            }
-        },
-        redirect() {
-            this.$router.push('/')
-        }
+  components: {
+    Notification,
+  },
+
+  data() {
+    return {
+      email: '',
+      password: '',
+      error: null
     }
+  },
+
+  methods: {
+    async login() {
+      try {
+        await this.$auth.loginWith('local', {
+          data: {
+          email: this.email,
+          password: this.password
+          }
+        })
+
+        this.$router.push('/')
+      } catch (e) {
+        this.error = e.response.data.message
+      }
+    }
+  }
 }
 </script>

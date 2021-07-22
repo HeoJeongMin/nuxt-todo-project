@@ -11,17 +11,22 @@
       </div>
       <div class="navbar-menu">
         <div class="navbar-end">
-          <div class="navbar-item has-dropdown is-hoverable">
+          <div class="navbar-item has-dropdown is-hoverable" v-if="isAuthenticated">
             <a class="navbar-link">
+              {{ loggedInUser.username }}
             </a>
             <div class="navbar-dropdown">
-              <!-- <nuxt-link class="navbar-item" to="/profile">My Profile</nuxt-link> -->
-              <!-- <hr class="navbar-divider"/> -->
-              <!-- <a class="navbar-item" @click="logout">Logout</a> -->
+              <nuxt-link class="navbar-item" to="/profile">My Profile</nuxt-link>
+              <hr class="navbar-divider"/>
+              <a class="navbar-item" @click="logout">Logout</a>
             </div>
           </div>
-          <template>
+          <template v-else>
+            <nuxt-link class="navbar-item" to="/user/list">User</nuxt-link>
+            <br/>
             <nuxt-link class="navbar-item" to="/todos/todo">TO-DO</nuxt-link>
+            <br/>
+            <nuxt-link class="navbar-item" to="/todos/list">TO-DO List</nuxt-link>
             <br/>
             <nuxt-link class="navbar-item" to="/user/register">Register</nuxt-link>
             <br/>

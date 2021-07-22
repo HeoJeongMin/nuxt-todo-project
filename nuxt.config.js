@@ -19,7 +19,7 @@ export default {
   },
 
   router: {
-    middleware: [ 'auth' ]
+    // middleware: [ 'auth' ]
   },
 
   loading: {
@@ -72,21 +72,6 @@ export default {
       }
     }
   },
-
-  serverMiddleware: [
-    // body-parser middleware
-    bodyParser.json(),
-    // session middleware
-    session({
-      secret: 'super-secret-key',
-      resave: false,
-      saveUninitialized: false,
-      cookie: { maxAge: 60000 }
-    }),
-    // Api middleware
-    // We add /api/login & /api/logout routes
-    '~/apis'
-  ],
 
   proxy: {
     '/prefix-url': 'proxy-url'

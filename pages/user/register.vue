@@ -48,10 +48,6 @@
               <button type="submit" class="button is-dark is-fullwidth">Register</button>
             </div>
           </form>
-
-          <div class="has-text-centered" style="margin-top: 20px">
-            Already got an account? <nuxt-link to="/login">Login</nuxt-link>
-          </div>
         </div>
       </div>
     </div>
@@ -77,7 +73,7 @@ export default {
     methods: {
         async register() {
             try {
-                await this.$axios.post('register', {
+                await this.$axios.post('user/post', {
                         username: this.username,
                         email: this.email,
                         password: this.password
