@@ -1,3 +1,6 @@
+import bodyParser from 'body-parser'
+import session from 'express-session'
+
 export default {
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
@@ -15,9 +18,9 @@ export default {
     ]
   },
 
-  // router: {
-  //   base: '/'
-  // },
+  router: {
+    middleware: [ 'auth' ]
+  },
 
   loading: {
     color: 'blue',
@@ -46,7 +49,8 @@ export default {
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [
     '@nuxtjs/axios',
-    '@nuxtjs/style-resources'
+    '@nuxtjs/style-resources',
+    '@nuxtjs/auth'
   ],
 
   styleResources: {
@@ -54,8 +58,36 @@ export default {
   },
   
   axios:{
-    proxy: true
+    baseURL: 'http://localhost:3000/'
   },
+
+  auth: {
+    strategies: {
+      local: {
+        endpoints: {
+          login: { url: 'login', method: 'post', propertyName: 'data.token' },
+          user: { url: 'me', method: 'get', propertyName: 'data' },
+          logout: false
+        }
+      }
+    }
+  },
+
+  serverMiddleware: [
+    // body-parser middleware
+    bodyParser.json(),
+    // session middleware
+    session({
+      secret: 'super-secret-key',
+      resave: false,
+      saveUninitialized: false,
+      cookie: { maxAge: 60000 }
+    }),
+    // Api middleware
+    // We add /api/login & /api/logout routes
+    '~/apis'
+  ],
+
   proxy: {
     '/prefix-url': 'proxy-url'
   },

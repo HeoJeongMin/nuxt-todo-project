@@ -1,16 +1,19 @@
 <template>
   <div class="container-fluid">
-    <Header />
+    <!-- <Header /> -->
+    <Navbar />
     <Nuxt/>
   </div>
 </template>
 
 <script>
 import Header from '@/layouts/Header.vue'
+import Navbar from '~/components/Navbar'
 
 export default {
   components: {
-    Header
+    Header,
+    Navbar
   }
 }
 </script>

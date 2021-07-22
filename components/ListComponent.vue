@@ -23,7 +23,7 @@
         <div class="wh fl mr20 font-18">
           {{ item.title }}
         </div>
-        <div class="fr ml20 mt7 font-12">
+        <div class="ye fr ml20 mt7 font-12">
           {{ item.date }}
         </div>
       </div>

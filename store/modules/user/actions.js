@@ -25,14 +25,15 @@ export default {
         })
     },
 
-    deleteUser ({ dispatch }, todo) {
+    deleteUser ({ dispatch }, user) {
       axios
-        .delete(`${process.env.VUE_APP_API_URL}/user/delete/`+todo.id)
+        .delete(`${process.env.VUE_APP_API_URL}/user/delete/`+user.user_id)
         .then(response => {
-          if(response.data === 1) {
+          console.log(response)
+          // if(response.data === 1) {
             dispatch('fetchUserList')
             alert('삭제되었습니다.')
-          }
+          // }
         })
     }
   }

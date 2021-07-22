@@ -11,13 +11,13 @@
         to="/todos/list" 
         class="btn btn-dark ml20 mr20"
       >
-        목록 페이지
+        TO-DO List
       </nuxt-link> |
       <nuxt-link 
         to="/user/list" 
         class="btn btn-dark ml20 mr20"
       >
-        사용자 관리
+        User
       </nuxt-link>
     </div>
   </div>

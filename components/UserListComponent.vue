@@ -8,6 +8,7 @@
                     <th>사용자 이름</th>
                     <th>이메일</th>
                     <th>전화번호</th>
+                    <th>삭제</th>
                 </tr>
             </thead>
             <tbody>
@@ -19,6 +20,14 @@
                     <td>{{ user.user_name }}</td>
                     <td>{{ user.email }}</td>
                     <td>{{ user.phone }}</td>
+                    <td>                      
+                    <button
+                        @click="onDeleteUser(user.user_id)"
+                        class="btn-warning"
+                    >
+                      Delete
+                    </button>
+                    </td>
                 </tr>
             </tbody>
         </table>
@@ -44,8 +53,15 @@ export default {
   },
   methods: {
     ...userStoreHelper.mapActions([
-      'fetchUserList'
+      'fetchUserList',
+      'deleteUser'
     ]),
+    onDeleteUser (user_id) {
+      const delete_confirm = confirm('삭제하시겠습니까?')
+      if(delete_confirm) {
+        this.deleteUser({ user_id: user_id })
+      }
+    }
   }
 }
 </script>
