@@ -5,13 +5,19 @@
         to="/todos/todo" 
         class="btn btn-dark mr20"
       >
-        추가 페이지
+        TO-DO
       </nuxt-link> |
       <nuxt-link 
         to="/todos/list" 
         class="btn btn-dark ml20 mr20"
       >
-        목록 페이지
+        TO-DO List
+      </nuxt-link> |
+      <nuxt-link 
+        to="/user/list" 
+        class="btn btn-dark ml20 mr20"
+      >
+        사용자
       </nuxt-link>
     </div>
   </div>

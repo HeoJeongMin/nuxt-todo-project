@@ -15,10 +15,19 @@ export default {
     ]
   },
 
+  // router: {
+  //   base: '/'
+  // },
+
+  loading: {
+    color: 'blue',
+    height: '5px'
+  },
+
   // Global CSS: https://go.nuxtjs.dev/config-css
   css: [
     '@/assets/css/style.css',
-    '@/assets/css/font-awesome.css'
+    '@/assets/css/font-awesome.css',
   ],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
@@ -34,8 +43,14 @@ export default {
 
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [
-    '@nuxtjs/axios'
+    '@nuxtjs/axios',
+    '@nuxtjs/style-resources'
   ],
+
+  styleResources: {
+
+  },
+  
   axios:{
     proxy: true
   },
