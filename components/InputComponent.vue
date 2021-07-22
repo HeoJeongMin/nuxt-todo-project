@@ -21,10 +21,8 @@
 
 <script>
 
-// namespace utils
 import { createNamespacedHelpers } from 'vuex'
 
-// helper
 const todoStoreHelper = createNamespacedHelpers('modules/todos')
 
 export default {
