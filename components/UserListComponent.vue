@@ -16,7 +16,12 @@
                     v-for="(user, index) in userList"
                     :key="index"
                 >
-                    <td>{{ user.user_id }}</td>
+                    <td 
+                      @click="onGetUser(user.user_id)"
+                      class="hover"
+                    >
+                      {{ user.user_id }}
+                    </td>
                     <td>{{ user.user_name }}</td>
                     <td>{{ user.email }}</td>
                     <td>{{ user.phone }}</td>
@@ -54,8 +59,13 @@ export default {
   methods: {
     ...userStoreHelper.mapActions([
       'fetchUserList',
+      'fetchUser',
       'deleteUser'
     ]),
+    onGetUser (user_id) {
+        this.fetchUser({ user_id: user_id })
+        this.$emit('open')
+    },
     onDeleteUser (user_id) {
       const delete_confirm = confirm('삭제하시겠습니까?')
       if(delete_confirm) {

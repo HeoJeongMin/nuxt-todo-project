@@ -21,6 +21,18 @@ export default {
         .then(response => {
           if(response.data === 1) {
             dispatch('fetchUserList')
+            alert(`${param.user_name} 사용자가 등록되었습니다.`)
+          }
+        })
+    },
+
+    fetchUser ({ commit }, user) {
+      axios
+        .get(`${process.env.VUE_APP_API_URL}/user/get/`+user.user_id)
+        .then(response => {
+          const resUser = response.data
+          if(Object.keys(resUser).length > 0) {
+            commit('getUser', resUser)
           }
         })
     },
@@ -29,11 +41,10 @@ export default {
       axios
         .delete(`${process.env.VUE_APP_API_URL}/user/delete/`+user.user_id)
         .then(response => {
-          console.log(response)
-          // if(response.data === 1) {
+          if(response.data === 1) {
             dispatch('fetchUserList')
             alert('삭제되었습니다.')
-          // }
+          }
         })
     }
   }

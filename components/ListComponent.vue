@@ -17,13 +17,18 @@
       </b>
       <div
         v-show="!item.seen"
-        :class="{ 'checkedColor' : item.completed }"
         class="di mt5"
       >
-        <div class="wh fl mr20 font-18">
+        <div 
+          :class="{ 'checkedColor' : item.completed }"
+          class="wh fl mr20 font-18"
+        >
           {{ item.title }}
         </div>
-        <div class="ye fr ml20 mt7 font-12">
+        <div 
+          :class="{ 'checkedColor' : item.completed }"
+          class="ye fr ml20 mt7 font-12"
+        >
           {{ item.date }}
         </div>
       </div>
@@ -115,7 +120,7 @@ button {
 }
 
 .checkedColor {
-  color: green;
+  color: green !important;
   text-decoration-line: line-through;
 }
 

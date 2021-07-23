@@ -1,5 +1,3 @@
-import bodyParser from 'body-parser'
-import session from 'express-session'
 
 export default {
   // Global page headers: https://go.nuxtjs.dev/config-head
@@ -17,7 +15,7 @@ export default {
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
     ]
   },
-
+  
   router: {
     // middleware: [ 'auth' ]
   },

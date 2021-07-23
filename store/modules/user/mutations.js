@@ -1,11 +1,15 @@
-
 export default {
     getUserList (state, user) {
       state.userList = user
     },
     
-    // 삭제
-    deleteTodo (state, index) {
-      state.todoList.splice(index, 1)
+    getUser (state, user) {
+      state.userInfo = {
+        userId : user.user_id,
+        userName : user.user_name,
+        password : user.password,
+        email : user.email,
+        phone : user.phone
+      }
     }
-}  
+}
