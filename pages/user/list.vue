@@ -53,7 +53,6 @@ export default {
     methods: {
         openModal () {
             this.isModalView = true
-            this.user = {}
         },
         closeModal() {
             this.isModalView = false

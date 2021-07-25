@@ -36,6 +36,9 @@ export default {
     ...todoStoreHelper.mapActions([
       'postTodo'
     ]),
+    computedData () {
+      console.log('watch')
+    },
     onAddTodo () {
       const date = new Date()
       const formatDate = 

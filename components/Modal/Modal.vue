@@ -7,6 +7,8 @@
                         사용자 등록
                     </h4>
                 </div>
+                <!-- <content-template ref="template"/> -->
+
                 <div class="modal-body">
                     <div class="def_info_box">
                         <form @submit.prevent="onAddUser">
@@ -87,12 +89,14 @@
                             <button v-show="registSeen"
                                 type="submit"
                                 class="input-group-addon"
+                                @click="$emit('apply', {})"
                             >
                                 등록
                             </button>
                             <button v-show="!registSeen"
                                 type="submit"
                                 class="input-group-addon"
+                                @click="$emit('update', {})"
                             >
                                 수정
                             </button>
@@ -129,20 +133,17 @@ export default {
   computed: {
     ...userStoreHelper.mapState([
       'userInfo'
-    ]),
-    userInfo: {
-        get () {
-            console.log(this.userInfo)
-        },
-        set () {
-            console.log(this.userInfo)
-        }
-    }
+    ])
   },
   methods: {
     ...userStoreHelper.mapActions([
       'postUser'
     ]),
+    reset() {
+        //this.$emit('reset', )
+
+        this.$refs.template.reset()
+    },
     onAddUser () {
         if(this.password !== this.rePassword) {
             alert('Password를 확인해주세요.')

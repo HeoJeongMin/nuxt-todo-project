@@ -2,6 +2,20 @@ import axios from 'axios'
 
 export default {
     fetchUserList ({ commit }) {
+      // const response = await axios.get(`${process.env.VUE_APP_API_URL}/user/list`)
+      // const response2 = await getData(response)
+      // const user = response.data
+          
+      // if(user.length > 0) {
+      //   commit('getUserList', user)
+      // }
+
+      Promise.all([
+        getUserInfo(),
+        getDataList()
+      ])
+      
+
       axios
         .get(`${process.env.VUE_APP_API_URL}/user/list`)
         .then(response => {
