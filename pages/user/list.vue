@@ -16,7 +16,7 @@
                 </div>
                 <div class="btn_area tar">
                     <button
-                        @click="openModal"
+                        @click="openModal()"
                         class="input-group-addon"
                     >
                         사용자 등록
@@ -25,6 +25,7 @@
             </div>
         </div>
         <modal 
+            :registSeen="registSeen"
             v-if="isModalView" 
             @close="closeModal"
         >
@@ -44,14 +45,19 @@ export default {
         Modal,
         UserLayout
     },
-    data () {
+    data: () => {
         return {
             isModalView: false,
-            registSeen: false
+            registSeen: Boolean
         }
     },
     methods: {
-        openModal () {
+        openModal (user_id) {
+            if(user_id !== undefined && user_id !== '') {
+                this.registSeen = false
+            } else {
+                this.registSeen = true
+            }
             this.isModalView = true
         },
         closeModal() {

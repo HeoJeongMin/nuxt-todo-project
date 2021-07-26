@@ -7,5 +7,5 @@ export default () => ({
     password: void 0,
     email: void 0,
     phone: void 0
-  }  
+  }
 })

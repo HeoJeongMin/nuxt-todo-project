@@ -14,7 +14,7 @@
                 <nuxt-link class="btn btn-dark mr20" to="/user/list">User</nuxt-link>
                 <nuxt-link class="btn btn-dark mr20" to="/todos/todo">TO-DO</nuxt-link>
                 <nuxt-link class="btn btn-dark mr20" to="/todos/list">TO-DO List</nuxt-link> |
-                <nuxt-link class="navbar-item" to="/user/register">Register</nuxt-link> |
+                <!-- <nuxt-link class="navbar-item" to="/user/register">Register</nuxt-link> | -->
                 <nuxt-link class="navbar-item" to="/login">Log In</nuxt-link> |
             </template>
         </div>

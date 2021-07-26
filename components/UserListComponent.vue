@@ -64,7 +64,7 @@ export default {
     ]),
     onGetUser (user_id) {
         this.fetchUser({ user_id: user_id })
-        this.$emit('open')
+        this.$emit('open', user_id)
     },
     onDeleteUser (user_id) {
       const delete_confirm = confirm('삭제하시겠습니까?')

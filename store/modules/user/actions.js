@@ -10,10 +10,10 @@ export default {
       //   commit('getUserList', user)
       // }
 
-      Promise.all([
-        getUserInfo(),
-        getDataList()
-      ])
+      // Promise.all([
+      //   getUserInfo(),
+      //   getDataList()
+      // ])
       
 
       axios
@@ -36,6 +36,19 @@ export default {
           if(response.data === 1) {
             dispatch('fetchUserList')
             alert(`${param.user_name} 사용자가 등록되었습니다.`)
+          }
+        })
+    },  
+
+    updateUser ({ dispatch }, user) {
+      const param = user
+      
+      axios
+        .post(`${process.env.VUE_APP_API_URL}/user/update`, param)
+        .then(response => {
+          if(response.data === 1) {
+            dispatch('fetchUserList')
+            alert(`${param.user_name} 사용자가 수정되었습니다.`)
           }
         })
     },
